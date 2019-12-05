@@ -2,7 +2,7 @@ from tkinter import *
 from Generador import Generador,Suma
 
 raiz = Tk()
-raiz.title("Tarjetas Magicas")
+raiz.title("Tarjetas Magicas en GIT")
 objSum = Suma.Sumar()
 
 objTar = Generador.Tarjetas()
