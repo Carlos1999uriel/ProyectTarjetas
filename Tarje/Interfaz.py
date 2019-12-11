@@ -28,10 +28,14 @@ def mostrar():
         var = 32
     elif (numTar == 7):
         var = 64
+        btnSiguiente.config(state="disable")
+        btnOtra.config(state="normal")
+
 
     objTar.setNumTar(numTar)
     taTarjeta.delete(1.0, END)
     taTarjeta.insert(END, objTar.GenMos(var))
+
 
 def clickedSi():
     if(numTar==1):
@@ -62,11 +66,14 @@ def clickNo():
 def otra():
     global numTar
     taTarjeta.delete(1.0, END)
+    taTarjeta.insert(END,"Piensa en un numero entre el 1 al 127\nDespues preciona mostrar e indica si tu numero está o no en la targejeta\n Despues presiona siguiente siguiente\n Hacer lo mismo para cada tarjeta.")
     btnSiguiente.config(text="Mostrar")
     objSum.setSuma(0)
     numTar=0
     lblNum.config(text="Tu numero es: ")
     btnSiguiente.config(state="normal")
+    btnOtra.config(state="disable")
+
 
 miFrame = Frame(raiz, width=365, height=350, bg="black")
 miFrame.pack()
@@ -79,6 +86,7 @@ lblTitulo.place(x=10, y=10)
 
 taTarjeta = Text(miFrame, bg="yellow", width = 40, height=10)
 taTarjeta.place(x=10, y=35)
+taTarjeta.insert(END,"Piensa en un numero entre el 1 al 127\nDespues preciona mostrar e indica si tu numero está o no en la targejeta despues siguiente\n Hacer lo mismo para cada tarjeta.")
 
 rbnSi = Button(miFrame, text= "Si", fg="white", bg="black", command= lambda :clickedSi())
 rbnSi.place(x=10, y=232)
@@ -92,7 +100,8 @@ btnSiguiente.place(x=250, y=230)
 lblNum = Label(miFrame, text="Tu numero es:", fg = "green", bg="black")
 lblNum.place(x=10, y=270)
 
-btnOtra = Button(miFrame, text="Otra vez", command = lambda :otra())
+btnOtra = Button(miFrame, text="Otra vez", bg="black", fg="green",command = lambda :otra())
 btnOtra.place(x=250, y=290)
+btnOtra.config(state="disable")
 
 raiz.mainloop()
